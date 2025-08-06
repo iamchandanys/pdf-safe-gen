@@ -1,12 +1,12 @@
 # pdf-safe-gen
 
-A utility to convert DOCX files to PDF, apply password protection to PDFs, and upload the protected PDFs to Azure Blob Storage.
+A utility to convert DOCX files to PDF, apply password protection to PDF, and upload the protected PDF to Azure Blob Storage.
 
 ## Features
 
 - Convert DOCX files (from a remote URL) to PDF
-- Password-protect generated PDFs
-- Upload protected PDFs to Azure Blob Storage
+- Password-protect generated PDF
+- Upload protected PDF to Azure Blob Storage
 - Temporary files are managed in the `temps/` directory
 
 ## Requirements
@@ -46,6 +46,12 @@ The main workflow is implemented in [docx-pdf.ipynb](docx-pdf.ipynb). Example st
    url = upload_pdf_to_blob(open(f"temps/{file_name}-protected.pdf", "rb").read())
    print(f"Protected PDF URL: {url}")
    ```
+5. Clean up temporary files:
+   ```python
+   delete_temp_files(f"{file_name}.docx")
+   delete_temp_files(f"{file_name}.pdf")
+   delete_temp_files(f"{file_name}-protected.pdf")
+   ```
 
 See the notebook for a complete example.
 
@@ -53,8 +59,3 @@ See the notebook for a complete example.
 
 - `temps/` — Temporary files (DOCX, PDF, protected PDF)
 - `docx-pdf.ipynb` — Main notebook with all logic
-- `back_up.ipynb` — Example usage and backup code
-
-## License
-
-MIT License (add your license if
