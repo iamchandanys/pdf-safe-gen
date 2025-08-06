@@ -1,0 +1,6 @@
+ipykernel
+docx2pdf
+PyPDF2
+requests
+azure-storage-blob
+dotenv
